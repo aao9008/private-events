@@ -1,0 +1,11 @@
+<h1>All Events</h1>
+
+<% if @events.any? %>
+    <ul>
+        <% @events.each do |event| %>
+            <li>Event <%= event.id - event.date %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p> No events found.</p>
+<% end %>
