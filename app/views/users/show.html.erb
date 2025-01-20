@@ -1,0 +1,11 @@
+<h1>Your Events</h1>
+
+<% if @events %>
+    <ul>
+        <% @events.each do |event| %>
+            <li><%= "Event #{event.id}: #{event.date.strftime('%m/%d/%Y')}" %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>You have no created events, create one now!</p>
+<% end %>
