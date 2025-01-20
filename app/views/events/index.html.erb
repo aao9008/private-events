@@ -3,9 +3,13 @@
 <% if @events.any? %>
     <ul>
         <% @events.each do |event| %>
-            <li>Event <%= event.id - event.date %></li>
+            <li>Event <%= "#{event.id} - #{event.date}" %></li>
         <% end %>
     </ul>
 <% else %>
     <p> No events found.</p>
+<% end %>
+
+<% if @user %>
+    <h3><%= link_to 'Your Events', user_path(@user) %></h3 >
 <% end %>
