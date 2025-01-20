@@ -1,0 +1,34 @@
+<h1>Create a new event!</h1>
+
+<%= form_with model: @event do |form| %>
+    <div>
+        <%= form.label :name, "Event Name:" %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :date, "Event Date:" %>
+        <%= form.date_field :date %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+
+    <% if flash[:success] %>
+        <div>
+            <%= flash[:success] %>
+        </div>
+    <% end %>
+
+    <% if flash[:error] %>
+        <div>
+            <%= flash[:error] %>
+        </div>
+        <ul>
+            <% @event.errors.full_messages.each do |error| %>
+                <li> <%= error %> </li>
+            <% end %>
+        </ul>
+    <% end %>
+<% end %>

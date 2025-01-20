@@ -3,7 +3,7 @@
 <% if @events %>
     <ul>
         <% @events.each do |event| %>
-            <li><%= "Event #{event.id}: #{event.date.strftime('%m/%d/%Y')}" %></li>
+            <li><%= link_to "Event #{event.name}: #{event.date.strftime('%m/%d/%Y')}", event_path(event) %></li>
         <% end %>
     </ul>
 <% else %>

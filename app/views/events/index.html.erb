@@ -3,7 +3,7 @@
 <% if @events.any? %>
     <ul>
         <% @events.each do |event| %>
-            <li>Event <%= "#{event.id} - #{event.date}" %></li>
+            <li>Event <%= "#{event.name} - #{event.date}" %></li>
         <% end %>
     </ul>
 <% else %>
