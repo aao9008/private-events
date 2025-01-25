@@ -1,6 +1,6 @@
-<h1>Your Events</h1>
+<h1>Your Created Events</h1>
 
-<% if @events %>
+<% if @events.any? %>
     <ul>
         <% @events.each do |event| %>
             <li><%= link_to "Event #{event.name}: #{event.date.strftime('%m/%d/%Y')}", event_path(event) %></li>
@@ -8,6 +8,17 @@
     </ul>
 <% else %>
     <p>You have no created events, create one now!</p>
+<% end %>
+
+<h1>Your Attended Events</h1>
+<% if @attended_events %>
+    <ul>
+        <% @attended_events.each do |event| %>
+            <li><%= link_to "#{event.name}: #{event.date.strftime('%m/%d/%Y')}"%> </li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>You have no attended events</p>
 <% end %>
 
 <p><%= link_to 'Back to All Events', events_path %></p>
