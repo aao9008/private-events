@@ -1,5 +1,25 @@
 <h1><%= @event.name %></h1>
 <p>Date: <%= @event.date.strftime('%B %d, %Y') %></p>
 
-<%= link_to 'Back to Your Events', user_path(@event.creator) %>
+<% if @event.attendees.any? %>
+    <h2>Attendees:</h2>
+    <ul>
+        <% @event.attendees.each do |attendee| %>
+            <li> <%= attendee.email %> </li>
+        <% end %>
+    </ul>
+<% elsif !current_user %>
+    <p> <%= link_to 'Login', new_user_session_path %> and join this event!</p>
+<% elsif current_user == @event.creator %>
+    <p>There currently are no attendees for your event at the moment.</p>
+<% else %>
+    <p> There are currently no attendees, be the first! </p>
+    <p> <%= link_to 'Join Event', event_attendances_path(event_id: @event.id) , method: :post,  data: { turbo_confirm: 'Are you sure you want to join this event?', turbo_method: :post } %>
+<% end %>
+    
+
+<p> <%= link_to 'Join Event', event_attendances_path(event_id: @event.id) , method: :post, data: { turbo_confirm: 'Are you sure you want to join this event?', turbo_method: :post }  %> <p>
+<p><%= link_to 'Back to All Events', events_path %></p>
+
+
 
