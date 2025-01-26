@@ -12,16 +12,28 @@
   </p>
 <% end %>
 
-<h1>All Events</h1>
+<h1>Past Events</h1>
 
-<% if @events.any? %>
+<% if @past_events.any? %>
     <ul>
-        <% @events.each do |event| %>
+        <% @past_events.each do |event| %>
              <li><%= link_to "Event #{event.name}: #{event.date.strftime('%m/%d/%Y')}", event_path(event) %></li>
         <% end %>
     </ul>
 <% else %>
-    <p> No events found.</p>
+    <p> No past events found.</p>
+<% end %>
+
+<h1>Upcoming Events</h1>
+
+<% if @upcoming_events.any? %>
+    <ul>
+        <% @upcoming_events.each do |event| %>
+             <li><%= link_to "Event #{event.name}: #{event.date.strftime('%m/%d/%Y')}", event_path(event) %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p> No upcoming events found.</p>
 <% end %>
 
 <% if @user %>
